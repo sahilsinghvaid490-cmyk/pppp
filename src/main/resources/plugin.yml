@@ -1,0 +1,22 @@
+name: CreeperAttack
+version: '${version}'
+main: com.example.creeperattack.CreeperAttackPlugin
+api-version: '1.21'
+description: A timed creeper invasion event plugin for Paper servers.
+author: Example
+website: https://example.com
+
+commands:
+  creeperattack:
+    description: Manage the CreeperAttack event.
+    usage: /<command> <start|stop|reload>
+    # Permission is checked manually in CreeperAttackCommand so the
+    # configurable messages.no-permission text is what players see.
+
+permissions:
+  creeperattack.admin:
+    description: Allows starting, stopping, and reloading CreeperAttack events.
+    default: op
+  creeperattack.bypass:
+    description: Excludes the player from being targeted by creeper attack events.
+    default: false

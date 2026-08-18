@@ -1,0 +1,67 @@
+# =====================================================
+# CreeperAttack Configuration
+# =====================================================
+
+# Master switch. When false, no automatic events will start
+# (manual /creeperattack start is also blocked).
+enabled: true
+
+# -----------------------------------------------------
+# Event timing
+# -----------------------------------------------------
+event:
+  # How often (in minutes) a creeper attack event automatically starts.
+  cooldown-minutes: 4
+  # How long (in seconds) the spawning period lasts once an event starts.
+  duration-seconds: 30
+
+# -----------------------------------------------------
+# Spawning behaviour
+# -----------------------------------------------------
+spawn:
+  # Total number of creepers spawned near EACH eligible player during one event.
+  amount: 20
+  # Maximum distance (blocks) from the player that creepers may spawn.
+  radius: 15
+  # Minimum distance (blocks) from the player that creepers may spawn.
+  minimum-distance: 5
+
+# -----------------------------------------------------
+# Worlds where the event should never trigger
+# -----------------------------------------------------
+worlds:
+  disabled:
+    - world_nether
+    - world_the_end
+
+# -----------------------------------------------------
+# Properties applied to spawned event creepers
+# -----------------------------------------------------
+creeper:
+  # Whether event creepers spawn already charged/powered.
+  powered: false
+  # Explosion radius override. Use "default" to keep vanilla behaviour,
+  # or a whole number (e.g. "3") to override it.
+  explosion-radius: default
+  # Whether event creepers drop their normal death loot.
+  can-drop-items: true
+  # Whether event creepers display a custom name.
+  custom-name-enabled: false
+  custom-name: "&cEvent Creeper"
+
+# -----------------------------------------------------
+# Messages (supports '&' colour codes)
+# -----------------------------------------------------
+messages:
+  event-started: "&cCreeper attack started!"
+  event-ended: "&aCreeper attack ended!"
+  no-permission: "&cYou do not have permission."
+  reload-success: "&aConfiguration reloaded successfully."
+  reload-failure: "&cFailed to reload configuration."
+  command-start-success: "&aCreeper attack event started."
+  command-stop-success: "&aCreeper attack event stopped."
+  command-disabled: "&cCreeperAttack is disabled in the configuration."
+  event-not-active: "&eThere is no active creeper attack event."
+  invalid-usage: "&cUsage: /creeperattack <start|stop|reload>"
+  unknown-command: "&cUnknown subcommand. Use /creeperattack <start|stop|reload>"
+  player-only: "&cThis command can only be used by a player."

@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0'
+
+description = 'CreeperAttack - a timed creeper invasion event plugin for Paper servers.'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://repo.papermc.io/repository/maven-public/'
+    }
+}
+
+dependencies {
+    // Provided at runtime by the Paper server, never bundled into the jar.
+    compileOnly 'io.papermc.paper:paper-api:1.21.1-R0.1-SNAPSHOT'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    filteringCharset = 'UTF-8'
+    def props = [version: version]
+    inputs.properties props
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
+
+tasks.jar {
+    archiveBaseName.set(rootProject.name)
+    archiveClassifier.set('')
+    archiveVersion.set(project.version.toString())
+}
+
+tasks.named('build') {
+    dependsOn(tasks.named('jar'))
+}
